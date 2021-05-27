@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-noticias
+  labels:
+    app: db-noticias
+spec:
+  containers:
+    - name: db-noticias-container
+      image: aluracursos/mysql-db:1
+      ports:
+        - containerPort: 3306 # atende nesta porta
+      envFrom: # importando as variáveis de ambiente do configmap especificado pelo name
+        - configMapRef:
+            name: db-configmap # vem do arquivo db-configmap.yaml
+      # não preciso definir aqui, caso não queria. Basta ler esses dados de um arquivo configMap
+      #env:
+       # - name: "MYSQL_ROOT_PASSWORD"
+       #   value: "123456"
+       # - name: "MYSQL_DATABASE"
+       #   value: "empresa"
+       # - name: "MYSQL_PASSWORD"
+       #   value: "654321"

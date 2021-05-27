@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-portal-noticias
+spec:
+  selector:
+    app: portal-noticias # o mesmo definido no arquivo portal-noticias.yaml
+  type: NodePort
+  ports:
+    - port: 80 # tudo que bater na porta 30000 (externo) ou 80 (interno), será redirecionado para a porta 80 do pod definido na label acima
+      #targetPort: 80 isso está implícito acima
+      nodePort: 30000 # porta aberta para o mundo externo. Se vc não definir, vem uma aleatória

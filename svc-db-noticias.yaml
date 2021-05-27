@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-db-noticias
+spec:
+  selector:
+    app: db-noticias # label definida no arquivo db-noticias.yaml
+  type: ClusterIP
+  ports:
+    - port: 3306 # atende as requisições internas na porta 3306 e as repassa na 3306 para o pod especificado com a label acima
