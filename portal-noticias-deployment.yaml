@@ -1,0 +1,27 @@
+# - A recomendação é usar Deployment em vez de ReplicaSet
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-noticias-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: portal-noticias # deve ser igual lá embaixo
+  template: # a partir daqui ficam as mesmas infos de um pod
+    metadata:
+      name: portal-noticias # vai ser o nome do pod
+      labels:
+        app: portal-noticias # deve ser igual lá em cima
+    spec:
+      containers:
+        - name: portal-noticias-container
+          image: aluracursos/portal-noticias:1
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: portal-configmap # definido no arquivo portal-configmap.yaml
+
+# - o interessante é que o serviço svc-portal-noticias continua redirecionando as chamadas para 
+# cada pod (com label app: portal-noticias) de maneira transparente, funcionando como um loadbalancer

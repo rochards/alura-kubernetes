@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-noticias-deployment
+spec:
+  # replicas: 1 # por default é 1
+  selector:
+    matchLabels:
+      app: db-noticias # deve ser igual lá embaixo
+  template: # a partir daqui ficam as mesmas infos de um pod
+    metadata:
+      name: db-noticias # vai ser o nome do pod
+      labels:
+        app: db-noticias # deve ser igual lá em cima
+    spec:
+      containers:
+        - name: db-noticias-container
+          image: aluracursos/mysql-db:1
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: db-configmap # definido no arquivo db-configmap
