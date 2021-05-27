@@ -11,7 +11,9 @@ Conceitos estudados:
 - *Pods*;
 - *Nodes* e *Control Pane*;
 - *Services* e seus tipos: *ClusterIP*, *NodeIP* e *LoadBalancer*;
-- *ConfigMap*.
+- *ConfigMap*;
+- *ReplicaSet*;
+- *Deployment*.
 
 Os arquivos descrevem a configuração necessária para montar o cluster abaixo
 
