@@ -1,0 +1,10 @@
+# exemplo tirado de -> https://kubernetes.io/docs/concepts/storage/storage-classes/#gce-pd
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: example
+provisioner: kubernetes.io/gce-pd # esse é específico do Google Cloud Plataform
+parameters:
+  type: pd-standard
+  fstype: ext4
+  replication-type: none
