@@ -15,9 +15,20 @@ Conceitos estudados:
 - *ReplicaSet*;
 - *Deployment*.
 
-Os arquivos descrevem a configuração necessária para montar o cluster abaixo
+Em um primeiro momento temos a configuração do cluster abaixo
 
 ![Cluster Kubernetes](images/cluster-kubernetes.png)
+
+Os arquivos que montam o cluster acima são (os arquivos de configmap devem ser executados antes dos pods):
+- svc-portal-noticias.yaml;
+- svc-sistema-noticias.yaml;
+- svc-db-noticias.yaml;
+- portal-configmap.yaml;
+- sistema-configmap.yaml;
+- db-configmap.yaml;
+- portal-noticias.yaml;
+- sistema-noticias.yaml;
+- db-noticias.yaml;
 
 Para o acessar o **Portal de Notícias**, o cliente faz requisições na porta 30000 exposta pelo serviço *svc-portal-noticias*. As informações para alimentar a página vem do **Sistema de Notícias**, por isso o Portal de Notícias faz requisições ao Sistema de Notícias por intermédio do serviço *svc-sistema-noticias* na porta 80. O fluxo segue até chegar no banco de dados *db-noticias*, sendo esse responsável por salvar e fornecer as notícias salvas.  
 O **Sistema de Notícias**, representado no diagrama pelo pod *sistema-noticias* pode ser acessado, através de login e senha, para que notícias possam ser cadastradas. Tal sistema fica exposto para o cliente através do serviço *svc-sistema-noticias* na porta 30001.  
