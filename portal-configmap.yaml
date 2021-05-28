@@ -3,5 +3,6 @@ kind: ConfigMap
 metadata:
   name: portal-configmap
 data:
-  IP_SISTEMA: svc-sistema-noticias:80 # tbm posso fazer assim pq um NodePort tbm funciona como um ClusterIp
-  #IP_SISTEMA: http://localhost:30001 # essa variável é requerida em portal-noticias.yaml. Quem está ouvindo em 30001 é o svc-sistema-noticias
+  # como o portal-noticias passou a ser feito dentro de um deployment, só conseguimos consumir as informações explicitando o endereço
+  #IP_SISTEMA: svc-sistema-noticias:80 # tbm posso fazer assim pq um NodePort tbm funciona como um ClusterIp
+  IP_SISTEMA: http://localhost:30001 # essa variável é requerida em portal-noticias.yaml. Quem está ouvindo em 30001 é o svc-sistema-noticias
