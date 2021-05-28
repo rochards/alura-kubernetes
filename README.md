@@ -13,7 +13,10 @@ Conceitos estudados:
 - *Services* e seus tipos: *ClusterIP*, *NodeIP* e *LoadBalancer*;
 - *ConfigMap*;
 - *ReplicaSet*;
-- *Deployment*.
+- *Deployment*;
+- *Stateful Set*
+- *PersistentVolume* e *PersistentVolumeClaim*;
+- *Storage class*.
 
 Em um primeiro momento temos a configuração do cluster abaixo
 
@@ -34,4 +37,10 @@ Para o acessar o **Portal de Notícias**, o cliente faz requisições na porta 3
 O **Sistema de Notícias**, representado no diagrama pelo pod *sistema-noticias* pode ser acessado, através de login e senha, para que notícias possam ser cadastradas. Tal sistema fica exposto para o cliente através do serviço *svc-sistema-noticias* na porta 30001.  
 O interessante a ser notado é que um *NodePort* atende tanto à requisições internas quanto externas, porém um *ClusterIP* atende apenas requisições internas.
 
-Curso realizada na plataforma Alura, podendo ser acessado por este [link](https://cursos.alura.com.br/course/kubernetes-pods-services-configmap).
+Uma outra cenário é subir os pods em *Deployments* e *Stateful Set*, conforme mosta a figura abaixo
+
+![Cluster Kubernetes 2](images/cluster-kubernetes2.png)
+
+Para reproduzir a cluster acima basta executar os arquivos .yaml que se encontram na raiz deste repositório, lembrando apenas que arquivos de *configmap* e *pvc* precisam ser executados primeiro.
+
+Cursos realizadas na plataforma Alura, podendo ser acessados pelos links [link1](https://cursos.alura.com.br/course/kubernetes-pods-services-configmap) e [link2](https://cursos.alura.com.br/course/kubernetes-deployments-volumes-escalabilidade).
