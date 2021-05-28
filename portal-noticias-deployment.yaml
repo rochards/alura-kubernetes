@@ -22,6 +22,14 @@ spec:
           envFrom:
             - configMapRef:
                 name: portal-configmap # definido no arquivo portal-configmap.yaml
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 10 # intervalo que o kubernetes vai ficar fazendo chamada para a rota acima para verificar a saúde da aplicação
+            failureThreshold: 3 # se tiver esse número de falhas, então reinicia
+            initialDelaySeconds: 20 # só depois desse tempo que o pod foi criado é que o Kubernetes vai fazer as requests
+
 
 # - o interessante é que o serviço svc-portal-noticias continua redirecionando as chamadas para 
 # cada pod (com label app: portal-noticias) de maneira transparente, funcionando como um loadbalancer
