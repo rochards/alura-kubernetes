@@ -30,6 +30,13 @@ spec:
             periodSeconds: 10 # intervalo que o kubernetes vai ficar fazendo chamada para a rota acima para verificar a saúde da aplicação
             failureThreshold: 3 # se tiver esse número de falhas, então reinicia
             initialDelaySeconds: 20 # só depois desse tempo que o pod foi criado é que o Kubernetes vai fazer as requests
+          readinessProbe:
+            httpGet:
+              path: /inserir_noticias.php # definido na aplicação
+              port: 80
+            periodSeconds: 10
+            failureThreshold: 5
+            initialDelaySeconds: 3
       volumes:
         - name: imagens
           persistentVolumeClaim: 
