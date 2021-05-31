@@ -16,7 +16,8 @@ Conceitos estudados:
 - *Deployment*;
 - *Stateful Set*
 - *PersistentVolume* e *PersistentVolumeClaim*;
-- *Storage class*.
+- *Storage class*;
+- *Horizontal Autoscaler* e servidor de métricas.
 
 Em um primeiro momento temos a configuração do cluster abaixo
 
