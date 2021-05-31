@@ -36,6 +36,9 @@ spec:
             periodSeconds: 10
             failureThreshold: 5
             initialDelaySeconds: 3
+          resources:
+            requests:
+              cpu: 10m # 10 milicores de cpu
 
 
 # - o interessante é que o serviço svc-portal-noticias continua redirecionando as chamadas para 
